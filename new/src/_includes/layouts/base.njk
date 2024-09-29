@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="UTF-8"/>
+    {% if description %}
+      <meta name="description" content="{{description}}"/>
+    {% endif %}
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+    <meta name="generator" content="Eleventy" />
+
+    <link rel="stylesheet" href="{{ hash['/css/styles.css'] | url }}"/>
+    <script defer src="{{ hash['/js/scripts.js'] | url }}"></script>
+
+    <!-- Local fonts -->
+		<style>
+			@font-face {
+				font-family: 'Rancho';
+				src: url('/fonts/Rancho-Regular.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'Atkinson Hyperlegible';
+				src: url('/fonts/AtkinsonHyperlegible-Regular.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'Atkinson Hyperlegible';
+				src: url('/fonts/AtkinsonHyperlegible-Bold.ttf') format('truetype');
+				font-weight: bold;
+				font-style: normal;
+				font-display: swap;
+			}
+			@font-face {
+				font-family: 'Bebas Neue';
+				src: url('/fonts/BebasNeue-Regular.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
+		</style>
+
+    {% block head %}{% endblock %}
+  </head>
+  <body class="antialiased bg-white font-sans text-6xl opacity-0 animate-fadeIn">
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
+  </body>
+</html>

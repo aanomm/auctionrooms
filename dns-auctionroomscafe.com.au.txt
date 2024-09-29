@@ -1,0 +1,49 @@
+;;
+;; Domain:     auctionroomscafe.com.au.
+;; Exported:   2023-12-19 06:17:37
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+auctionroomscafe.com.au	3600	IN	SOA	rita.ns.cloudflare.com. dns.cloudflare.com. 2045463325 10000 2400 604800 3600
+
+;; NS Records
+auctionroomscafe.com.au.	86400	IN	NS	rita.ns.cloudflare.com.
+auctionroomscafe.com.au.	86400	IN	NS	sean.ns.cloudflare.com.
+;; ns1.voice.net.au, ns3.voice.net.au, ns2.voice.net.au
+
+
+;; A Records
+auctionroomscafe.com.au.	1	IN	A	198.185.159.145
+auctionroomscafe.com.au.	1	IN	A	198.185.159.144
+auctionroomscafe.com.au.	1	IN	A	198.49.23.144
+auctionroomscafe.com.au.	1	IN	A	198.49.23.145
+
+;; CNAME Records
+mail.auctionroomscafe.com.au.	1	IN	CNAME	mx01.voice.net.au.
+www.auctionroomscafe.com.au.	1	IN	CNAME	ext-cust.squarespace.com.
+
+;; MX Records
+auctionroomscafe.com.au.	1	IN	MX	10 mx01a.voice.net.au.
+
+;; TXT Records
+auctionroomscafe.com.au.	1	IN	TXT	"v=spf1 a mx include:_mailers.voice.net.au -all"

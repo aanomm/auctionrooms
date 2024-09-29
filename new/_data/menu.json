@@ -1,0 +1,44 @@
+[
+  {
+    "text": "About",
+    "url": "/about",
+    "target": false,
+    "icon": ""
+  },
+  {
+    "text": "Cafe Menu",
+    "url": "https://www.auctionrooms.menu/",
+    "target": true,
+    "icon": ""
+  },
+  {
+    "text": "Table Bookings",
+    "url": "/bookings",
+    "target": false,
+    "icon": ""
+  },
+  {
+    "text": "Private Functions",
+    "url": "/functions",
+    "target": false,
+    "icon": ""
+  },
+  {
+    "text": "Online Shop",
+    "url": "https://auctionrooms.shop",
+    "target": true,
+    "icon": ""
+  },
+  {
+    "text": "Instagram",
+    "url": "https://www.instagram.com/auction_rooms/",
+    "target": true,
+    "icon": ""
+  },
+  {
+    "text": "Contact",
+    "url": "/contact",
+    "target": false,
+    "icon": ""
+  }
+]

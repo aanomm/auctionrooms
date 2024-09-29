@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Matt Preston",
+    "from": "MasterChef",
+    "review": "Extraordinary."
+  },
+  {
+    "name": "Becy Moore",
+    "from": "YOLK",
+    "review": "Best coffee in Melbourne."
+  },
+  {
+    "name": "Visit Victoria",
+    "from": ".com",
+    "review": "The forefront of food and coffee."
+  },
+  {
+    "name": "Broadsheet",
+    "from": "",
+    "review": "Abuzz with a belly-warming menu."
+  },
+  {
+    "name": "The Local Project",
+    "from": "",
+    "review": "Iconic, relaxed, and alive."
+  },
+  {
+    "name": "Hidden City Secrets",
+    "from": "",
+    "review": "Iconic venue and delightful menu."
+  }
+]

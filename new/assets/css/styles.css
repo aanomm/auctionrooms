@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-atki {
+    font-family: 'Atkinson Hyper', sans-serif;
+  }
