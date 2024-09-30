@@ -1,0 +1,71 @@
+<div class="flex items-center justify-center w-full min-h-screen p-8">
+  <div class="container mx-auto flex flex-col sm:flex-row items-center">
+
+    <!-- COL 1 / LOGO -->
+    <div class="w-full sm:w-1/2 flex flex-col items-center text-center">
+      <img src="img/ar-logo-blk.png" class="w-full h-auto mb-6" width="220" height="150" alt="Auction Rooms Logo" />
+        <h1 class="text-[9rem] font-bold uppercase mb-4 underline underline-offset-[20px]">Auction Rooms</h1>
+        <h2 class="text-6xl font-bold uppercase mb-4">Iconic Coffee, Food &amp; Functions</h2>
+        <p class="text-3xl">Open 7 Days <span class="text-amber-300 px-1">&middot;</span> 103 Errol Street, North Melbourne <span class="text-amber-300 px-1">&middot;</span> <a href="tel:+61393267749">(03) 9326 7749</a></p>
+    </div>
+
+    <!-- COL 2 / REVIEWS -->
+    <div name="two" class="w-full sm:w-1/2 flex flex-col items-end">
+      {# <div class="flex flex-col items-start mt-0"></div> #}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl">
+          <div class="px-6 py-6 text-5xl rounded-lg relative flex items-center justify-center text-right">
+            <div class="flex items-center uppercase pt-2 text-4xl">
+              <svg class="size-9 mr-3 -mt-1" version="1.1" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+                <path d="m617.14 551.66v-200.23h-34.285v200.23c-19.887 7.0312-34.289 26.059-34.289 48.344 0 7.8867 1.8867 15.43 4.9727 22.113l-128.57 128.57 24.344 24.344 128.57-128.57c6.6836 3.0859 14.227 4.9727 22.113 4.9727 28.285 0 51.43-22.973 51.43-51.43 0-22.285-14.402-41.312-34.285-48.344z"/>
+                <path d="m600 51.43c-302.57 0-548.57 246.17-548.57 548.57 0 302.57 246 548.57 548.57 548.57 302.4 0 548.57-246 548.57-548.57 0-302.4-246.17-548.57-548.57-548.57zm328.71 849.28-77.988-77.988-25.879 25.879 78.039 78.039c-75.387 69.953-174.91 114.16-284.58 118.61v-111.1l-36.605-0.003906v111.1c-109.67-4.4531-209.19-48.66-284.58-118.61l78.039-78.039-25.879-25.879-77.988 77.992c-69.223-75.605-112.67-175.1-116.6-284.54h109.02v-36.602l-108.91-0.003906c4.9336-108.84 49.059-207.56 118.56-282.46l75.918 75.918 25.879-25.879-75.867-75.867c75.117-68.77 173.8-112.12 282.4-116.54v106.85h36.602l-0.003906-106.85c108.6 4.4102 207.29 47.766 282.41 116.54l-75.867 75.867 25.879 25.879 75.914-75.914c69.5 74.902 113.62 173.62 118.56 282.46h-108.92v36.602h109.03c-3.9258 109.43-47.371 208.92-116.59 284.53z"/>
+              </svg>
+              <div id="status" class=""></div>
+              <script src="/assets/js/hours.js"></script>
+            </div>
+          </div>
+
+        {% set count = 0 %}
+        {% for review in press %}
+          {% if count < 3 %}
+            <div class="bg-amber-50 px-6 pt-16 pb-12 rounded-lg shadow-md relative">
+              <div class="absolute inset-0 bg-amber-50 rounded-lg shadow-md -rotate-1"></div>
+              {# <div class="flex items-center -space-x-2 mb-4">
+                {% for i in range(1, review.stars + 1) %}
+                  <svg class="size-12 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                {% endfor %}
+              </div> #}
+              <div class="absolute top-2 left-4 z-[1]">
+                {% set svgSize = "size-20" %}
+                {% set svgColor = "text-amber-200" %}
+                {% include "quote.svg" %}
+              </div>
+              <div class="relative z-[2]">
+                <p class="mb-1 pl-16 uppercase text-5xl">{{ review.review }}</p>
+                <p class="font-normal pl-16 font-rancho text-4xl">
+                  <span class="text-amber-300">—</span> {{ review.name }} {% if review.from %}<span class="text-amber-300">(</span>{{ review.from }}<span class="text-amber-300">)</span>{% endif %}
+                </p>
+              </div>
+            </div>
+            {% set count = count + 1 %}
+          {% endif %}
+        {% endfor %}
+        <div class=" px-6 py-6 text-3xl rounded-lg relative flex items-center justify-center">
+          <div class="flex items-center -mt-2">
+              {% set svgSize = "size-10" %}
+              {% set svgColor = "text-amber-300" %}
+              {% include "star.svg" %}
+              {% include "star.svg" %}
+              {% include "star.svg" %}
+              {% include "star.svg" %}
+              {% include "star.svg" %}
+          </div>
+          <span name="5stars" class="ml-2">1,746 Reviews</span>
+        </div>
+    </div>
+
+  </div>{# excess div tag? #}
+
+  </div>
+</div>

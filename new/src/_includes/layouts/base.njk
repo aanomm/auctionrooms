@@ -1,3 +1,5 @@
+{% from "imagerow.njk" import imageRow %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,8 +50,437 @@
     {% block head %}{% endblock %}
   </head>
   <body class="antialiased bg-white font-sans text-6xl opacity-0 animate-fadeIn">
+
+	{% set py = "py-48" %}
+	{% set imagerowpadding = "" %}
+
+	{% if heroBlock %}
+	<!-- HERO BLOCK-->
+	<div class="section flex items-center justify-center w-full min-h-screen p-8">
+		<div class="container mx-auto flex flex-col sm:flex-row items-center">
+
+		<!-- COL 1 / LOGO -->
+		<div class="w-full sm:w-1/2 flex flex-col items-center text-center">
+			{% if page.url != "/" %}
+			<a href="/">
+			{% endif %}
+			<img src="/img/ar-logo-blk.png" class="w-full h-auto mb-6" width="220" height="150" alt="Auction Rooms Logo" />
+			{% if page.url != "/" %}
+			</a>
+			{% endif %}
+			<h1 class="text-[9rem] font-bold uppercase mb-4 underline underline-offset-[20px]">Auction Rooms</h1>
+			<h2 class="text-6xl font-bold uppercase mb-4">Iconic Coffee, Food &amp; Functions</h2>
+			<p class="text-3xl">Open 7 Days <span class="text-amber-300 px-1">&middot;</span> 103 Errol Street, North Melbourne <span class="text-amber-300 px-1">&middot;</span> <a href="tel:+61393267749">(03) 9326 7749</a></p>
+		</div>
+
+		<!-- COL 2 / REVIEWS -->
+		<div name="two" class="w-full sm:w-1/2 flex flex-col items-end">
+			{# <div class="flex flex-col items-start mt-0"></div> #}
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl">
+				{% if tradeHours %}
+					<div id="hours" class="px-6 py-6 text-5xl rounded-lg relative flex items-center justify-center text-right">
+						<div class="flex items-center uppercase pt-2 text-4xl">
+							<svg class="size-9 mr-3 -mt-1" version="1.1" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+							<path d="m617.14 551.66v-200.23h-34.285v200.23c-19.887 7.0312-34.289 26.059-34.289 48.344 0 7.8867 1.8867 15.43 4.9727 22.113l-128.57 128.57 24.344 24.344 128.57-128.57c6.6836 3.0859 14.227 4.9727 22.113 4.9727 28.285 0 51.43-22.973 51.43-51.43 0-22.285-14.402-41.312-34.285-48.344z"/>
+							<path d="m600 51.43c-302.57 0-548.57 246.17-548.57 548.57 0 302.57 246 548.57 548.57 548.57 302.4 0 548.57-246 548.57-548.57 0-302.4-246.17-548.57-548.57-548.57zm328.71 849.28-77.988-77.988-25.879 25.879 78.039 78.039c-75.387 69.953-174.91 114.16-284.58 118.61v-111.1l-36.605-0.003906v111.1c-109.67-4.4531-209.19-48.66-284.58-118.61l78.039-78.039-25.879-25.879-77.988 77.992c-69.223-75.605-112.67-175.1-116.6-284.54h109.02v-36.602l-108.91-0.003906c4.9336-108.84 49.059-207.56 118.56-282.46l75.918 75.918 25.879-25.879-75.867-75.867c75.117-68.77 173.8-112.12 282.4-116.54v106.85h36.602l-0.003906-106.85c108.6 4.4102 207.29 47.766 282.41 116.54l-75.867 75.867 25.879 25.879 75.914-75.914c69.5 74.902 113.62 173.62 118.56 282.46h-108.92v36.602h109.03c-3.9258 109.43-47.371 208.92-116.59 284.53z"/>
+							</svg>
+							<div id="status" class=""></div>
+							<script src="/assets/js/hours.js"></script>
+						</div>
+					</div>
+				{% endif %}
+
+			{% set count = 0 %}
+			{% for review in press %}
+				{% if count < 3 %}
+				<div class="bg-amber-50 px-6 pt-16 pb-12 rounded-lg shadow-md relative">
+					<div class="absolute inset-0 bg-amber-50 rounded-lg shadow-md -rotate-1"></div>
+					{# <div class="flex items-center -space-x-2 mb-4">
+					{% for i in range(1, review.stars + 1) %}
+						<svg class="size-12 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+						<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+						</svg>
+					{% endfor %}
+					</div> #}
+					<div class="absolute top-2 left-4 z-[1]">
+					{% set svgSize = "size-20" %}
+					{% set svgColor = "text-amber-200" %}
+					{% include "quote.svg" %}
+					</div>
+					<div class="relative z-[2]">
+					<p class="mb-1 pl-16 uppercase text-5xl">{{ review.review }}</p>
+					<p class="font-normal pl-16 font-rancho text-4xl">
+						<span class="text-amber-300">—</span> {{ review.name }} {% if review.from %}<span class="text-amber-300">(</span>{{ review.from }}<span class="text-amber-300">)</span>{% endif %}
+					</p>
+					</div>
+				</div>
+				{% set count = count + 1 %}
+				{% endif %}
+			{% endfor %}
+			<div class=" px-6 py-6 text-3xl rounded-lg relative flex items-center justify-center">
+				<div class="flex items-center -mt-2">
+					{% set svgSize = "size-10" %}
+					{% set svgColor = "text-amber-300" %}
+					{% include "star.svg" %}
+					{% include "star.svg" %}
+					{% include "star.svg" %}
+					{% include "star.svg" %}
+					{% include "star.svg" %}
+				</div>
+				<span name="5stars" class="ml-2">1,746 Reviews</span>
+			</div>
+		</div>
+
+		</div>{# excess div tag? #}
+
+		</div>
+	</div>
+	{% endif %}
+
+	{% if heroImage %}
+		<!-- HERO IMAGE -->
+		<div id="hero" class="section mt-1 sm:-mt-3 pb- xl:mx-auto xl:max-w-full xl:px-8 relative">
+			<img src="/img/ar-sky-blue-opti.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage">
+			{# <img src="/img/front-3.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
+			{# <img src="/img/outside-3.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
+			{# <div class="absolute inset-0 flex items-center justify-center">
+			<div class="bg-black bg-opacity-70 p-8 rounded-lg text-white text-center">
+				<h2 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Auction Rooms</h2>
+				<p class="text-xl md:text-3xl">Book a Table &middot; See our Menu &middot; Buy a Gift Card &middot; See More</p>
+			</div>
+			</div> #}
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+			  const image = document.getElementById('scrollImage');
+
+			  // Apply initial grayscale
+			  image.style.filter = 'grayscale(1)';
+
+			  const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+				  const rect = entry.boundingClientRect;
+				  const viewportHeight = window.innerHeight;
+
+				  // Calculate how much of the viewport the image is filling
+				  const visiblePortion = Math.min(viewportHeight, Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0))) / viewportHeight;
+
+				  if (visiblePortion > 0) {
+					// Accelerate the transition to full color
+					const filterValue = Math.max(0, 1 - visiblePortion * 3);
+					image.style.filter = `grayscale(${filterValue})`;
+
+					// If the image fills more than a third of the viewport, remove all filters
+					if (visiblePortion > 0.33) {
+					  image.style.filter = 'none';
+					}
+				  } else {
+					// Apply full grayscale when not in view
+					image.style.filter = 'grayscale(1)';
+				  }
+				});
+			  }, {
+				threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+				rootMargin: "0px"
+			  });
+
+			  observer.observe(image);
+			});
+		</script>
+	{% endif %}
+
+
+	<!-- TEXT BLOCK I -->
+	{% if textOne %}
+		<div id="textOne" class="container mx-auto section">
+			<h2 class="text-6xl font-bold text-center pb-4 px-6 bg-cover bg-center rounded-lg underline underline-offset-8 decoration-amber-300 decoration-4">
+			{{ textOneTitle }}
+			</h2>
+			<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			{{ textOneSubtitle }}
+			</h3>
+			<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+			<span class="font-medium">{{ textOneTextbold }}</span> {{ textOneText }}
+			</p>
+		</div>
+	{% endif %}
+
+
+
+	<!-- IMAGE ROW I -->
+	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
+		<div class="grid grid-cols-4 gap-3">
+		<div class="relative">
+			<img src="/img/coffee-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		</div>
+		<div class="relative">
+			<img src="/img/food-6.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		</div>
+		<div class="relative">
+			<img src="/img/drinks-1v2.png" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		</div>
+		<div class="relative">
+			<img src="/img/food-soup-v1.png" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		</div>
+		</div>
+	</div> #}
+
+	{% if imagerow1 %}
+    	{{ imageRow(imagerow.row1) }}
+	{% endif %}
+
+
+	<!-- TEXT BLOCK II -->
+	{% if textTwo %}
+		<div id="textTwo" class="container mx-auto section">
+			<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg underline underline-offset-8 decoration-amber-300 decoration-4">
+			{{ textTwoTitle }}
+			</h2>
+			<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			{{ textTwoSubtitle }}
+			</h3>
+			<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+			<span class="font-medium">{{ textTwoTextbold }}</span> {{ textTwoText }}
+			</p>
+		</div>
+	{% endif %}
+
+
+	<!-- IMAGE ROW 2 -->
+	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
+		<div class="grid grid-cols-4 gap-3">
+		  <div class="relative">
+			<img src="/img/branding-1v1.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		  </div>
+		  <div class="relative">
+			<img src="/img/drinks-3v1.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		  </div>
+		  <div class="relative">
+			<img src="/img/food-5.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		  </div>
+		  <div class="relative">
+			<img src="/img/inside-1.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		  </div>
+		</div>
+	</div> #}
+	{% if imagerow2 %}
+		{{ imageRow(imagerow.row2) }}
+	{% endif %}
+
+
+	<!-- TEXT BLOCK III -->
+	{% if textThree %}
+		<div id="textThree" class="container mx-auto section">
+			<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg underline underline-offset-8 decoration-amber-300 decoration-4">
+			{{ textThreeTitle }}
+			</h2>
+			<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			{{ textThreeSubtitle }}
+			</h3>
+			<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+			<span class="font-medium">{{ textThreeTextbold }}</span>{{ textThreeText }}
+			</p>
+		</div>
+	{% endif %}
+
+
+	<!-- IMAGE ROW IV -->
+	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
+		<div class="grid grid-cols-4 gap-3">
+		  <div class="relative">
+		<img src="/img/branding-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+	  </div>
+	  <div class="relative">
+		<img src="/img/coffee-2.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+	  </div>
+	  <div class="relative">
+		<img src="/img/courtyard-1.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+	  </div>
+	  <div class="relative">
+		<img src="/img/food-3.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+	  </div>
+		</div>
+	</div> #}
+	{% if imagerow3 %}
+		{{ imageRow(imagerow.row3) }}
+	{% endif %}
+
     {% block content %}
       {{ content | safe }}
     {% endblock %}
+
+
+	<!-- Customer Reviews -->
+<div id="cusReviews" class="container mx-auto section">
+  <h2 class="text-6xl font-bold mb-8 text-center py-4 px-6 bg-cover bg-center rounded-lg underline underline-offset-8 decoration-amber-300 decoration-4">
+    Customer Reviews
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-3xl mx-auto">
+    <!-- Debug info -->
+    <p>Current page: {{ page.url }}</p>
+    <p>Number of reviews: {{ reviews | length }}</p>
+
+    {% if reviews | length > 0 %}
+      {% if page.url == "/reviews/" %}
+        {% for review in reviews %}
+          <div class="relative">
+            <div class="absolute inset-0 bg-amber-50 rounded-lg shadow-md -rotate-1"></div>
+            <div class="relative px-6 py-12">
+              <div class="flex items-center -space-x-2 mb-4">
+                {% for i in range(1, review.stars + 1) %}
+                  <svg class="size-12 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                {% endfor %}
+              </div>
+              <div class="absolute top-2 left-4 z-[1]">
+                {% set svgSize = "size-20" %}
+                {% set svgColor = "text-amber-200" %}
+                {% include "quote.svg" %}
+              </div>
+              <div class="relative z-[2]">
+                <p class="mb-1 pl-16 text-5xl">{{ review.review }}</p>
+                <p class="font-semibold pl-16 font-rancho text-4xl flex items-center">
+                  <span class="text-amber-300">—</span>&nbsp;{{ review.name }}
+                  {% if review.from %}
+                    <span class="text-amber-300">(</span>{{ review.from }}<span class="text-amber-300">)</span>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for review in reviews | slice(0, 3) %}
+          <div class="relative">
+            <div class="absolute inset-0 bg-amber-50 rounded-lg shadow-md -rotate-1"></div>
+            <div class="relative px-6 py-12">
+              <div class="flex items-center -space-x-2 mb-4">
+                {% for i in range(1, review.stars + 1) %}
+                  <svg class="size-12 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                {% endfor %}
+              </div>
+              <div class="absolute top-2 left-4 z-[1]">
+                {% set svgSize = "size-20" %}
+                {% set svgColor = "text-amber-200" %}
+                {% include "quote.svg" %}
+              </div>
+              <div class="relative z-[2]">
+                <p class="mb-1 pl-16 text-5xl">{{ review.review }}</p>
+                <p class="font-semibold pl-16 font-rancho text-4xl flex items-center">
+                  <span class="text-amber-300">—</span>&nbsp;{{ review.name }}
+                  {% if review.from %}
+                    <span class="text-amber-300">(</span>{{ review.from }}<span class="text-amber-300">)</span>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        {% if reviews | length > 3 %}
+          <!-- Read More Press Reviews Block -->
+          <div id="moreReviews" class="relative bg-amber-50 rounded-lg shadow-md">
+            <div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
+            <div class="relative flex items-center h-full px-6 py-12">
+              <div class="absolute top-2 left-4 z-[1]">
+                {% set svgSize = "size-20" %}
+                {% set svgColor = "text-gray-200" %}
+                {% include "quote.svg" %}
+              </div>
+              <a href="/reviews" class="pl-16 text-5xl text-center hover:underline no-underline">
+                Read more customer reviews...
+                <span class="inline-block">
+                  {% set svgSize = "size-12" %}
+                  {% set svgColor = "text-gray-300" %}
+                  {% include "r-arrow.svg" %}
+                </span>
+              </a>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% else %}
+      <p>No reviews available.</p>
+    {% endif %}
+  </div>
+</div>
+
+
+	<!-- Instagram -->
+	<div id="insta" class="container !pt-30 !pb-12 mx-auto section">
+		<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg underline underline-offset-8 decoration-amber-300 decoration-4">
+			{# <svg class="inline-block mr-3 text-amber-300" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.059 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+			</svg> #}
+			<a target="_blank" href="https://www.instagram.com/auction_rooms/">Follow Us On Instagram</a>
+		</h2>
+		<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+		<a target="_blank" href="https://www.instagram.com/auction_rooms/" class="no-underline">@Auction_Rooms</a>
+		</h3>
+		{# <p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+		<span class="font-medium">{{ textThreeTextbold }}</span>{{ textThreeText }}
+		</p> #}
+	</div>
+
+
+	<!-- Footer -->
+	<div id="footer" class="container mx-auto pt-0 pb-6">
+	<div class="grid grid-cols-1 text-3xl mx-auto">
+		<div class="relative">
+		  <div class="absolute inset-0 bg-amber-50 rounded-lg shadow-md -rotate-0"></div>
+		  <div class="relative px-6 py-12">
+			<div class="relative z-[2]">
+			  <p class="font-semibold pl-16 font-sans text-4xl">
+				{% for menu in menu %}
+				{% if loop.first %}
+				  <span class="inline-block align-baseline mr-1">
+					<a href="/">
+					  <img src="/img/ar-logo-blk-sm.png" alt="Auction Rooms Logo" class="h-12" />
+					</a>
+				  </span>
+				  <span class="text-amber-300 px-1 inline-block align-bottom">&middot;</span>
+				{% endif %}
+				<a href="{{ menu.url }}"
+				   class="inline-block align-bottom text-4xl font-semibold text-black hover:text-amber-300 transition-colors duration-300 no-underline hover:underline"
+				   {% if menu.target %}
+					 target="_blank"
+				   {% endif %}>
+				  {{ menu.text }}
+				</a>
+				{% if not loop.last %}
+				  <span class="text-amber-300 px-1 inline-block align-bottom">&middot;</span>
+				{% endif %}
+			  {% endfor %}
+
+			  </p>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<div class="grid grid-cols-1 w-1/2 text-4xl mx-auto font-rancho mt-8">
+	  <div class="flex items-center justify-center">
+		<span>&copy; Auction Rooms {{ now | date("yyyy") }}</span>
+		<span class="text-amber-300 px-3">&middot;</span>
+		<a href="https://www.lanebrain.co" class="no-underline">An <span class="underline decoration-4 underline-offset-2 decoration-amber-200">Exceptional</span> Website</a>
+	  </div>
+		</div>
+	</div>
+
+
   </body>
 </html>

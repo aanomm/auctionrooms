@@ -5,3 +5,11 @@
 .font-atki {
     font-family: 'Atkinson Hyper', sans-serif;
   }
+
+.section {
+  @apply py-24;
+}
+
+a {
+  @apply underline underline-offset-8 decoration-amber-300 decoration-4;
+}
