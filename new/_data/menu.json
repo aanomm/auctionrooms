@@ -18,9 +18,9 @@
     "icon": ""
   },
   {
-    "text": "Menu",
-    "url": "https://www.auctionrooms.menu/",
-    "target": true,
+    "text": "FAQs",
+    "url": "/faqs",
+    "target": false,
     "icon": ""
   },
   {
