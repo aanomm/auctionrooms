@@ -1,7 +1,7 @@
 [
   {
     "text": "About",
-    "url": "/about",
+    "url": "/about#read",
     "target": false,
     "icon": ""
   },
@@ -14,6 +14,12 @@
   {
     "text": "Reviews",
     "url": "/reviews",
+    "target": false,
+    "icon": ""
+  },
+  {
+    "text": "Menu",
+    "url": "https://www.auctionrooms.menu",
     "target": false,
     "icon": ""
   },
@@ -38,12 +44,6 @@
   {
     "text": "Shop",
     "url": "https://auctionrooms.shop",
-    "target": true,
-    "icon": ""
-  },
-  {
-    "text": "Instagram",
-    "url": "https://www.instagram.com/auction_rooms/",
     "target": true,
     "icon": ""
   },

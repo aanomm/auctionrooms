@@ -1,26 +1,32 @@
 [
   {
     "name": "David R.",
-    "review": "Great coffee and service. Iconic venue inside and out. My everyday delight."
+    "review": "Great coffee and service. Iconic venue inside and out. My everyday delight.",
+    "stars": 5
   },
   {
     "name": "Olivia P.",
-    "review": "Love the chic vibe and godly food. Smashed avo is my favourite."
+    "review": "Love the chic vibe and godly food. Smashed avo is my favourite.",
+    "stars": 5
   },
   {
     "name": "Chris M.",
-    "review": "Best coffee in Melbourne hands-down. These baristas know their craft..."
+    "review": "Best coffee in Melbourne hands-down. These baristas know their craft...",
+    "stars": 5
   },
   {
     "name": "David R.",
-    "review": "Great coffee and service. Iconic venue inside and out. My everyday delight."
+    "review": "Great coffee and service. Iconic venue inside and out. My everyday delight.",
+    "stars": 5
   },
   {
     "name": "Olivia P.",
-    "review": "Love the chic vibe and godly food. Smashed avo is my favourite."
+    "review": "Love the chic vibe and godly food. Smashed avo is my favourite.",
+    "stars": 5
   },
   {
     "name": "Chris M.",
-    "review": "Best coffee in Melbourne hands-down. These baristas know their craft..."
+    "review": "Best coffee in Melbourne hands-down. These baristas know their craft...",
+    "stars": 5
   }
 ]

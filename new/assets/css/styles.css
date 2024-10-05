@@ -11,5 +11,9 @@
 }
 
 a {
-  @apply underline underline-offset-8 decoration-amber-300 decoration-4;
+  @apply underline underline-offset-4 decoration-2 decoration-dashed decoration-slate-300 hover:decoration-slate-500;
+}
+
+.under {
+  @apply underline underline-offset-4 decoration-4 decoration-solid;
 }
