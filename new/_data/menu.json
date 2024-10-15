@@ -1,56 +1,40 @@
 [
   {
     "text": "About",
-    "url": "/about#read",
-    "target": false,
-    "icon": ""
+    "url": "/about"
   },
   {
     "text": "Press",
-    "url": "/press",
-    "target": false,
-    "icon": ""
+    "url": "/press"
   },
   {
     "text": "Reviews",
-    "url": "/reviews",
-    "target": false,
-    "icon": ""
+    "url": "/reviews"
   },
   {
     "text": "Menu",
     "url": "https://www.auctionrooms.menu",
-    "target": false,
-    "icon": ""
+    "target": true
   },
   {
     "text": "FAQs",
-    "url": "/faqs",
-    "target": false,
-    "icon": ""
+    "url": "/faqs"
   },
   {
     "text": "Bookings",
-    "url": "/bookings",
-    "target": false,
-    "icon": ""
+    "url": "/bookings"
   },
   {
     "text": "Functions",
-    "url": "/functions",
-    "target": false,
-    "icon": ""
+    "url": "/functions"
   },
   {
     "text": "Shop",
-    "url": "https://auctionrooms.shop",
-    "target": true,
-    "icon": ""
+    "url": "/shop",
+    "target": ""
   },
   {
     "text": "Contact",
-    "url": "/contact",
-    "target": false,
-    "icon": ""
+    "url": "/contact"
   }
 ]

@@ -1,12 +1,14 @@
-{% macro imageRow(rowData, basePath="/img/") %}
-<div class="section max-w-prose mx-auto">
-  <div class="grid grid-cols-4 gap-3">
-    {% for image in rowData %}
-    <div class="relative">
-      <a target="_blank" href="https://www.instagram.com/auction_rooms/"><img src="{{ basePath }}{{ image[0] }}" alt="{{ image[1] }}" class="w-full h-full object-cover rounded-lg"></a>
-      <img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+{% macro imageRow(rowData, basePath="/img/", instaPics=false, ptOr="") %}
+  <div class="section {% if instaPics %}!pt-0{% endif %} {{ ptOr }} max-w-prose mx-auto">
+    <div class="grid grid-col-2 lg:grid-cols-4 gap-3">
+      {% for image in rowData %}
+      <div class="relative group">
+        <a target="_blank" href="https://www.instagram.com/auction_rooms/">
+          <img src="{{ basePath }}{{ image[0] }}" alt="{{ image[1] }}" class="w-full h-full object-cover rounded-lg group-hover:shadow-lg lg:group-hover:-rotate-1 transition duration-500">
+        </a>
+        <img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
 {% endmacro %}

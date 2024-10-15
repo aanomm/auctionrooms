@@ -11,6 +11,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
     <meta name="generator" content="Eleventy" />
+	<link rel="icon" href="/img/favicon.png" type="image/png">
 
     <link rel="stylesheet" href="{{ hash['/css/styles.css'] | url }}"/>
     <script defer src="{{ hash['/js/scripts.js'] | url }}"></script>
@@ -49,7 +50,7 @@
 
     {% block head %}{% endblock %}
   </head>
-  <body class="antialiased bg-white font-sans text-6xl opacity-0 animate-fadeIn">
+  <body class="antialiased bg-white font-sans text-6xl opacity-0 animate-fadeIn px-8 md:px-8">
 
 	{# {% set py = "py-48" %}
 	{% set imagerowpadding = "" %} #}
@@ -58,7 +59,7 @@
 
 	{% if heroBlock %}
 		<!-- HERO BLOCK-->
-		<div class="section flex items-center justify-center w-full min-h-screen p-8">
+		<div class="section flex items-center justify-center w-full min-h-screen">
 			<div class="container mx-auto flex flex-col sm:flex-row items-center">
 
 			<!-- COL 1 / LOGO -->
@@ -70,8 +71,8 @@
 				{% if page.url != "/" %}
 				</a>
 				{% endif %}
-				<h1 class="text-[9rem] font-bold uppercase mb-4 underline underline-offset-[20px]">Auction Rooms</h1>
-				<h2 class="text-6xl font-bold uppercase mb-4">Iconic Coffee, Food &amp; Functions</h2>
+				<h1 class="text-[6rem] sm:text-[9rem] font-bold uppercase mb-4 underline underline-offset-[20px]">Auction Rooms</h1>
+				<h2 class="text-4xl sm:text-6xl font-bold uppercase mb-4">Iconic Coffee, Food &amp; Functions</h2>
 				<p class="text-3xl">Open 7 Days <span class="px-1">&middot;</span> <a target="_blank" href="https://www.google.com/maps/place/Auction+Rooms/@-37.8025013,144.9469134,946m/data=!3m1!1e3!4m16!1m9!3m8!1s0x6ad65d3a0e358701:0xc9ae831bd92e6c98!2sAuction+Rooms!8m2!3d-37.8025013!4d144.9494883!9m1!1b1!16s%2Fg%2F1tj21pg3!3m5!1s0x6ad65d3a0e358701:0xc9ae831bd92e6c98!8m2!3d-37.8025013!4d144.9494883!16s%2Fg%2F1tj21pg3!5m1!1e1?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D">103 Errol Street, North Melbourne</a> <span class="px-1">&middot;</span> <a href="tel:+61393267749">(03) 9326 7749</a></p>
 			</div>
 
@@ -180,18 +181,18 @@
 	<!-- TEXT BLOCK I -->
 	{% if textOne %}
 		<div name="" id="read" class="container mx-auto section {% if heroImage != false %}!pt-3{% endif %}">
-			<h2 class="text-6xl font-bold text-center pb-4 px-6 bg-cover bg-center rounded-lg under">
+			<h3 class="text-6xl font-bold text-center pb-4 px-6 bg-cover bg-center rounded-lg ">
 			{{ textOneTitle }}
 			</h2>
-			<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 			{{ textOneSubtitle }}
 			</h3>
-			<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+			<p class="font-xxlight tracking-ss font-atki text-3xl sm:text-4xl max-w-prose mx-auto">
 			<span class="font-medium">{{ textOneTextbold }}</span> {{ textOneText }}
 			</p>
 			{% if textOneMoreText %}
 				<br>
-				<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+				<p class="font-xxlight tracking-ss font-atki text-4xl max-w-prose mx-auto">
 				{{ textOneMoreText }}
 				</p>
 			{% endif %}
@@ -230,17 +231,17 @@
 	{% if textTwo %}
 		<div id="textTwo" class="container mx-auto section">
 			{% if textTwoTitle %}
-				<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg under">
+				<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg ">
 				{{ textTwoTitle }}
 				</h2>
 			{% endif %}
 			{% if textTwoSubtitle %}
-				<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+				<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 				{{ textTwoSubtitle }}
 				</h3>
 			{% endif %}
 			{% if textTwoTextbold %}
-				<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+				<p class="font-xxlight tracking-ss font-atki text-4xl max-w-prose mx-auto">
 				<span class="font-medium">{{ textTwoTextbold }}</span>{% if textTwoText %}{{ textTwoText }}{% endif %}
 				</p>
 			{% endif %}
@@ -277,13 +278,13 @@
 	<!-- TEXT BLOCK III -->
 	{% if textThree %}
 		<div id="textThree" class="container mx-auto section">
-			<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg under">
+			<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg ">
 			{{ textThreeTitle }}
 			</h2>
-			<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 			{{ textThreeSubtitle }}
 			</h3>
-			<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl max-w-prose mx-auto">
+			<p class="font-xxlight tracking-ss font-atki text-4xl max-w-prose mx-auto">
 			<span class="font-medium">{{ textThreeTextbold }}</span>{{ textThreeText }}
 			</p>
 		</div>
@@ -322,59 +323,13 @@
 
 
 
-	{% if faqs %}
-		<!-- FAQs -->
-		<div id="faqs" class="container mx-auto w-3/5 {% if heroImage != false %}!pt-3{% endif %}">
-			<h2 class="text-6xl font-bold mb-8 text-center py-4 px-6 bg-cover bg-center rounded-lg under">
-			FAQs
-			</h2>
-			{% if faqs and faq.length > 0 %}
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl mx-auto">
-					{% for item in faq %}
-						<div class="relative">
-							<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-0"></div>
-							<div class="relative px-6 py-12">
-								<div class="relative z-[2]">
-									<p class="mb-1 pl-16 text-5xl">{{ item.question }}</p>
-									<p class="font-xxlight tracking-ss pl-16 font-atki text-4xl">
-										<span class="bg-amber-100 px-2 pb-1">{{ item.answer1 }}</span>
-										{{ item.answer2 }}
-									</p>
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-
-					<!-- Read More FAQs Block -->
-					<div class="relative bg-amber-50 rounded-lg shadow-md">
-						<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
-						<div class="relative flex items-center h-full px-6 py-12">
-							<a href="/contact/" class="pl-16 text-5xl text-center hover:underline">
-								Have more Questions? Contact Us...
-								<span class="inline-block">
-								{% set svgSize = "size-12" %}
-								{% set svgColor = "text-amber-300" %}
-								{% include "r-arrow.svg" %}
-								</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			{% else %}
-
-			{% endif %}
-		</div>
-	{% endif %}
-
-
-
 	{% if pressReviews %}
 		<!-- Press Reviews -->
-		<div id="pressReviews" class="container mx-auto section {% if heroImage != false %}!pt-3{% endif %}">
-			<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg under">
+		<div id="read" class="container mx-auto section {% if heroImage != false %}!pt-3{% endif %}">
+			<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
 				Press Reviews
 			</h2>
-			<h3 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			<h4 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 				In The News.
 			</h3>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-3xl mx-auto">
@@ -436,11 +391,11 @@
 
 	{% if cusReviews %}
 		<!-- Customer Reviews -->
-		<div id="cusReviews" class="container mx-auto section {% if heroImage != false %}!pt-3{% endif %}">
-			<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg under">
+		<div id="read" class="container mx-auto section {% if page.url != '/' and heroImage != false %}!pt-3{% endif %}">
+			<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg ">
 				Customer Reviews
 			</h2>
-			<h3 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			<h4 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 				From People Like You.
 				</h3>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-3xl mx-auto">
@@ -474,20 +429,102 @@
 	{% endif %}
 
 
+	{% if faqs %}
+		<!-- FAQs -->
+		<div id="read" class="container mx-auto w-3/5 {% if heroImage != false %}!pt-3{% endif %}">
+			<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
+			Frequently Asked Questions
+			</h3>
+			<h4 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+				And Answers.
+			</h3>
+			{% if faqs and faq.length > 0 %}
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl mx-auto">
+					{% for item in faq %}
+						<div class="relative">
+							<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-0"></div>
+							<div class="relative px-6 py-12">
+								<div class="relative z-[2]">
+									<p class="mb-1 text-5xl">{{ item.question }}</p>
+									<p class="font-xxlight tracking-ss font-atki text-4xl">
+										<span class="">{{ item.answer1 }}</span>
+										{{ item.answer2 }}
+									</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+
+					<!-- Read More FAQs Block -->
+					<div class="relative bg-amber-50 rounded-lg shadow-md">
+						<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
+						<div class="relative flex items-center h-full px-6 py-12">
+							<a href="/contact/" class="pl-16 text-5xl text-center hover:underline">
+								Have more Questions? Contact Us...
+								<span class="inline-block">
+								{% set svgSize = "size-12" %}
+								{% set svgColor = "text-amber-300" %}
+								{% include "r-arrow.svg" %}
+								</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			{% else %}
+
+			{% endif %}
+		</div>
+	{% endif %}
+
+	<!-- TEXT BLOCK III -->
+	{% if contactForm %}
+		<div id="contactForm" class="container mx-auto section">
+			{# <h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
+				Contact Form
+			</h3>
+			<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+				Get in Touch
+			</h4> #}
+			<form name="contact" method="POST" data-netlify="true" class="max-w-2xl mx-auto">
+				<input type="hidden" name="form-name" value="contact" />
+				<div class="mb-6">
+					<label for="name" class="block text-3xl font-medium text-gray-700 mb-2">Name</label>
+					<input type="text" id="name" name="name" required class="w-full px-4 py-3 text-3xl border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500">
+				</div>
+				<div class="mb-6">
+					<label for="email" class="block text-3xl font-medium text-gray-700 mb-2">Email</label>
+					<input type="email" id="email" name="email" required class="w-full px-4 py-3 text-3xl border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500">
+				</div>
+				<div class="mb-6">
+					<label for="message" class="block text-3xl font-medium text-gray-700 mb-2">Message</label>
+					<textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 text-3xl border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500"></textarea>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="inline-block px-8 py-4 text-3xl font-medium text-white bg-amber-500 rounded-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">
+						Send Message
+					</button>
+				</div>
+			</form>
+		</div>
+	{% endif %}
+
 
 	<!-- Instagram -->
 	<div id="insta" class="container !pt-30 !pb-12 mx-auto section">
-		<h2 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
+		<h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
 			{# <svg class="inline-block mr-3 text-amber-300" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 				<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.059 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
 			</svg> #}
-			<a target="_blank" href="https://www.instagram.com/auction_rooms/">See Our Instagram</a>
+			<a class="" target="_blank" href="https://www.instagram.com/auction_rooms/">See Our Instagram</a>
 		</h2>
-		<h3 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
-		<a target="_blank" href="https://www.instagram.com/auction_rooms/" class="no-underline">@Auction_Rooms</a>
+		<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
+			<a target="_blank" href="https://www.instagram.com/auction_rooms/" class="no-underline">@Auction_Rooms</a>
 		</h3>
+
+		{% set instaPics = true %}
+		{% set ptOr = "!pt-0" %}
 		{% if instaPics %}
-			{{ imageRow(imagerow.row1) }}
+			{{ imageRow(imagerow.row1, "/img/", instaPics, ptOr) }}
 		{% endif %}
 	</div>
 
@@ -509,7 +546,7 @@
 							</span>
 							<span class="px-4 inline-block align-bottom">&middot;</span>
 							{% endif %}
-							<a href="{{ menu.url }}"
+							<a href="{{ menu.url }}{% if not menu.target %}#read{% endif %}"
 							class="inline-block align-bottom text-4xl font-semibold text-black hover:text-amber-300 transition-colors duration-300 no-underline hover:underline"
 							{% if menu.target %}
 								target="_blank"
@@ -529,7 +566,7 @@
 		<div class="grid grid-cols-1 w-1/2 text-4xl mx-auto font-rancho mt-8">
 		<div class="flex items-center justify-center">
 			<span>&copy; Auction Rooms {{ now | date("yyyy") }}</span>
-			<span class="text-amber-300 px-3">&middot;</span>
+			<span class="px-3">&middot;</span>
 			<a href="https://www.lanebrain.co" class="no-underline">An <span class="under">Exceptional</span> Website</a>
 		</div>
 		</div>

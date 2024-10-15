@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .transition {
+    @apply transition-transform duration-200;
+  }
+}
+
 .font-atki {
     font-family: 'Atkinson Hyper', sans-serif;
   }
@@ -14,6 +20,10 @@ a {
   @apply underline underline-offset-4 decoration-2 decoration-dashed decoration-slate-300 hover:decoration-slate-500;
 }
 
-.under {
+h3, .under {
   @apply underline underline-offset-4 decoration-4 decoration-solid;
+}
+
+h3 a {
+  @apply !no-underline !decoration-0;
 }
