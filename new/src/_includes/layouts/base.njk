@@ -114,7 +114,7 @@
 								{% include "star.svg" %}
 							{% endfor %}
 						</div>
-						<span name="5stars" class="ml-2">1,746 Reviews</span>
+						<span name="5stars" class="ml-2">1,096 Reviews</span>
 					</div>
 			</div>
 
@@ -437,7 +437,7 @@
 			</h3>
 			<h4 class="text-5xl font-rancho -mt-2 mb-14 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 				And Answers.
-			</h3>
+			</h4>
 			{% if faqs and faq.length > 0 %}
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl mx-auto">
 					{% for item in faq %}
@@ -449,6 +449,12 @@
 									<p class="font-xxlight tracking-ss font-atki text-4xl">
 										<span class="">{{ item.answer1 }}</span>
 										{{ item.answer2 }}
+										{% if item.moreInfoLink and item.moreInfoText %}
+											<a href="{{ item.moreInfoLink }}"
+											   {% if item.target %}target="{{ item.target }}" rel="noopener noreferrer"{% endif %}>
+												{{ item.moreInfoText }}
+											</a>
+										{% endif %}
 									</p>
 								</div>
 							</div>
@@ -456,14 +462,14 @@
 					{% endfor %}
 
 					<!-- Read More FAQs Block -->
-					<div class="relative bg-amber-50 rounded-lg shadow-md">
+					<div class="relative bg-gray-50 rounded-lg shadow-md">
 						<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
 						<div class="relative flex items-center h-full px-6 py-12">
-							<a href="/contact/#read" class="pl-16 text-5xl text-center hover:underline">
+							<a href="/contact/#read" class="text-5xl text-center hover:underline">
 								Have more Questions? Contact Us...
 								<span class="inline-block">
 								{% set svgSize = "size-12" %}
-								{% set svgColor = "text-amber-300" %}
+								{% set svgColor = "text-gray-300" %}
 								{% include "r-arrow.svg" %}
 								</span>
 							</a>
@@ -471,7 +477,7 @@
 					</div>
 				</div>
 			{% else %}
-
+				<p>No FAQs available at the moment.</p>
 			{% endif %}
 		</div>
 	{% endif %}

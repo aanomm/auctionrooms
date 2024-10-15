@@ -1,17 +1,22 @@
 [
   {
     "name": "Kazusa",
-    "review": "The Tiramisu French Toast touched my heart. Yum!",
+    "review": "The Tiramisu French Toast touched my heart. See you again soon!",
     "stars": 5
   },
   {
-    "name": "David R.",
-    "review": "Great coffee and service. Iconic venue inside and out. My everyday delight.",
+    "name": "Emma C.",
+    "review": "The Brekkie Board is a feast for the eyes and palate!",
+    "stars": 5
+  },
+  {
+    "name": "Alesha S.",
+    "review": "Always a great experience. The Tiramisu French Toast is OMG!",
     "stars": 5
   },
   {
     "name": "Olivia P.",
-    "review": "Love the chic vibe and godly food. Smashed avo is my favourite.",
+    "review": "Love the chic vibe inside. Smashed avo is my favourite so far.",
     "stars": 5
   },
   {
@@ -20,18 +25,23 @@
     "stars": 5
   },
   {
+    "name": "Giang T.",
+    "review": "The food is fabulous and the drinks make Auction Rooms so Melbourne.",
+    "stars": 5
+  },
+  {
+    "name": "P. Sparkles",
+    "review": "A stunning space and beautiful building. So much character.",
+    "stars": 5
+  },
+  {
     "name": "David R.",
     "review": "Great coffee and service. Iconic venue inside and out. My everyday delight.",
     "stars": 5
   },
   {
-    "name": "Olivia P.",
-    "review": "Love the chic vibe and godly food. Smashed avo is my favourite.",
-    "stars": 5
-  },
-  {
-    "name": "Chris M.",
-    "review": "Best coffee in Melbourne hands-down. These baristas know their craft...",
+    "name": "Francis C.",
+    "review": "Deliscous food, comfortables seats, and a stunning interior design.",
     "stars": 5
   }
 ]

@@ -22,11 +22,16 @@
     {
       "question": "Do you cater for dietary requirements?",
       "answer1": "Yes we cater for everyone",
-      "answer2": "with deliscious vegetarian, vegan, gluten-free, and dairy-free menu options."
+      "answer2": "with delicious vegetarian, vegan, gluten-free, and dairy-free menu options.",
+      "moreInfoText": "See our Menu",
+      "moreInfoLink": "https://auctionrooms.menu",
+      "target": "_blank"
     },
     {
       "question": "Can I host an event at Auction Rooms?",
-      "answer1": "Yes our iconic, heratige-listed venue",
-      "answer2": "is the perfect place for your next event or private function."
+      "answer1": "Yes our iconic, heritage-listed venue",
+      "answer2": "is the perfect place for events, celebrations, and even private meetings.",
+      "moreInfoText": "Learn More",
+      "moreInfoLink": "/functions#read"
     }
 ]
