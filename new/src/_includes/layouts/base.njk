@@ -242,7 +242,7 @@
 			{% endif %}
 			{% if textTwoTextbold %}
 				<p class="font-xxlight tracking-ss font-atki text-4xl max-w-prose mx-auto">
-				<span class="font-medium">{{ textTwoTextbold }}</span>{% if textTwoText %} {{ textTwoText }}{% endif %}
+				<span class="font-medium">{{ textTwoTextbold }}</span>{% if textTwoText %} {{ textTwoText }}{% endif %} {% if textTwoLink %} <a href="{{ textTwoLink }}">{{ textTwoLinkText }}</a>{% endif %}
 				</p>
 			{% endif %}
 		</div>
@@ -578,7 +578,7 @@
 		<div class="flex items-center justify-center">
 			<span>&copy; Auction Rooms {{ now | date("yyyy") }}</span>
 			<span class="px-3">&middot;</span>
-			<a href="https://www.lanebrain.co" class="no-underline">An <span class="under">Exceptional</span> Website</a>
+			<a href="https://www.lanebrain.co" class="no-underline" target="_blank">An <span class="under">Exceptional</span> Website</a>
 		</div>
 		</div>
 	</div>
