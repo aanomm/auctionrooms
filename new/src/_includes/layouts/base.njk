@@ -612,12 +612,13 @@
 							</span>
 							<span class="px-4 inline-block align-bottom">&middot;</span>
 							{% endif %}
-							<a href="{{ menu.url }}{% if not menu.target %}#read{% endif %}"
-							class="inline-block align-bottom text-4xl font-semibold text-black hover:text-amber-300 transition-colors duration-300 no-underline hover:underline"
-							{% if menu.target %}
-								target="_blank"
-							{% endif %}>
-							{{ menu.text }}
+							<a href="{{ menu.url }}"
+							   class="inline-block align-bottom text-4xl font-semibold text-black hover:text-amber-300 transition-colors duration-300 no-underline hover:underline"
+							   {% if menu.target %}
+								 target="_blank"
+							   {% endif %}>
+							  {{ menu.text }}
+							  {% if not menu.target %}<span class="sm:hidden">#read</span>{% endif %}
 							</a>
 							{% if not loop.last %}
 							<span class="px-3 inline-block align-bottom">&middot;</span>
