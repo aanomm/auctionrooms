@@ -12,6 +12,10 @@
     "url": "/reviews"
   },
   {
+    "text": "Private Dining",
+    "url": "/private-dining"
+  },
+  {
     "text": "Menu",
     "url": "https://www.auctionrooms.menu",
     "target": true
@@ -27,11 +31,6 @@
   {
     "text": "Functions",
     "url": "/functions"
-  },
-  {
-    "text": "Shop",
-    "url": "/shop",
-    "target": ""
   },
   {
     "text": "Contact",
