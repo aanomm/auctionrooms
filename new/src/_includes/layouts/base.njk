@@ -56,7 +56,7 @@
 	{% set imagerowpadding = "" %} #}
 
 	{% set suppColor = "slate-200" %}
-	{% set buttonClass = "inline-block px-8 py-4 text-4xl font-medium text-white bg-black border-4 border-black rounded-lg hover:bg-white hover:text-black hover:border-4 hover:border-black focus:outline-none no-underline" %}
+	{% set buttonClass = "inline-block px-8 py-4 text-4xl font-medium text-white bg-black border-4 border-black rounded-lg hover:bg-white hover:text-black hover:border-4 hover:border-black focus:outline-none no-underline transition" %}
 
 
 	{% if heroBlock %}
@@ -65,7 +65,9 @@
 			<div class="container mx-auto flex flex-col sm:flex-row items-center">
 
 				<!-- COL 1 / LOGO -->
-				<div class="w-full sm:w-1/2 flex flex-col px-6 items-center text-center">
+				<div name="one" class="w-full sm:w-1/2 flex flex-col px-6 items-center text-center min-h-screen sm:min-h-0 justify-between py-8">
+					<div class="flex-grow"></div> <!-- Top spacer -->
+
 					{% if page.url != "/" %}
 						<a href="/">
 					{% endif %}
@@ -73,14 +75,18 @@
 					{% if page.url != "/" %}
 						</a>
 					{% endif %}
+
 					<h1 class="text-[5.6rem] sm:text-[9rem] font-bold uppercase mb-4 underline underline-offset-[20px]">Auction Rooms</h1>
+
 					<h2 class="text-4xl sm:text-6xl font-bold uppercase mb-4">Iconic Coffee, Food &amp; Functions</h2>
+
 					<p class="text-3xl">Open 7 Days <span class="px-1">&middot;</span> <a target="_blank" href="https://www.google.com/maps/place/Auction+Rooms/@-37.8025013,144.9469134,946m/data=!3m1!1e3!4m16!1m9!3m8!1s0x6ad65d3a0e358701:0xc9ae831bd92e6c98!2sAuction+Rooms!8m2!3d-37.8025013!4d144.9494883!9m1!1b1!16s%2Fg%2F1tj21pg3!3m5!1s0x6ad65d3a0e358701:0xc9ae831bd92e6c98!8m2!3d-37.8025013!4d144.9494883!16s%2Fg%2F1tj21pg3!5m1!1e1?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D">103 Errol Street, North Melbourne</a> <span class="px-1">&middot;</span> <a href="tel:+61393267749">(03) 9326 7749</a></p>
+
+					<div class="flex-grow"></div> <!-- Bottom spacer -->
 				</div>
 
 				<!-- COL 2 / REVIEWS -->
 				<div name="two" class="w-full sm:w-1/2 flex flex-col items-end">
-				{# <div class="flex flex-col items-start mt-0"></div> #}
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 pl-6 gap-6 text-3xl">
 					{% if tradeHours %}
 						<div id="hours" class="text-5xl rounded-lg relative flex items-center justify-center text-right">
@@ -119,7 +125,7 @@
 					</div>
 			</div>
 
-			</div> {# excess div tag? #}
+			</div>
 
 			</div>
 		</div>
@@ -410,9 +416,9 @@
 							{% include "review-block.njk" %}
 						</div>
 					{% endfor %}
-					{% set ctaText = "Leave a Review for Auction Rooms" %}
-					{% set ctaLink = "contact" %}
-					{% include "reviews-cta.njk" %}
+					{# {% set ctaText = "Leave a Review for Auction Rooms" %}
+					{% set ctaLink = "contact" %} #}
+					{# {% include "reviews-cta.njk" %} #}
 				{% else %}
 					{% for item in reviews %}
 						{% if loop.index <= 3 %}
@@ -538,7 +544,7 @@
 
 	<!-- CTA -->
 	{% if cta %}
-		<div id="" class="container mx-auto section {% if page.url != '/' and heroImage != false %}!pt-3{% endif %}">
+		<div id="" class="container mx-auto section {% if page.url != '/' and heroImage != false %}mt-0{% endif %}">
 			<!-- Did You Know Block -->
 			<div id="DidYouKnow" class="relative bg-gray-50 rounded-lg shadow-md group">
 				<div class="absolute inset-0 bg-gray-50 rounded-lg shadow-md -rotate-1 transition-transform duration-300 group-hover:rotate-0"></div>
