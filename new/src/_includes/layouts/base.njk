@@ -1,4 +1,5 @@
 {% from "imagerow.njk" import imageRow %}
+{% from "image-utils.njk" import imgSrc %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,24 @@
 
     <link rel="stylesheet" href="{{ hash['/css/styles.css'] | url }}"/>
     <script defer src="{{ hash['/js/scripts.js'] | url }}"></script>
+
+    {% set currentIndex = -1 %}
+    {% for item in menu %}
+      {% if item.url == page.url %}
+        {% set currentIndex = loop.index0 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if currentIndex > -1 %}
+      {% if currentIndex > 0 %}
+        {% set prevPage = menu[currentIndex - 1] %}
+        <link rel="preload" href="{{ prevPage.url }}" as="document">
+      {% endif %}
+      {% if currentIndex < menu.length - 1 %}
+        {% set nextPage = menu[currentIndex + 1] %}
+        <link rel="preload" href="{{ nextPage.url }}" as="document">
+      {% endif %}
+    {% endif %}
 
     <!-- Local fonts -->
 		<style>
@@ -55,7 +74,25 @@
 	{# {% set py = "py-48" %}
 	{% set imagerowpadding = "" %} #}
 
+	{% if env == 'pro' %}
+		{% set cdn = ".netlify/images?url=/" %}
+		{% macro imgSrc(src, width=null, height=null, format=null) %}
+			{% set params = [] %}
+			{% if width %}{% set params = params.concat(['w=' + width]) %}{% endif %}
+			{% if height %}{% set params = params.concat(['h=' + height]) %}{% endif %}
+			{% if format %}{% set params = params.concat(['fm=' + format]) %}{% endif %}
+			{% set params = params.concat(['fit=crop']) %}
+			{{ cdn }}{{ src }}?{{ params | join('&') }}
+		{% endmacro %}
+		{% else %}
+		{% set cdn = "" %}
+		{% macro imgSrc(src, width=null, height=null, format=null) %}
+			/{{ src }}
+		{% endmacro %}
+	{% endif %}
+
 	{% set suppColor = "slate-200" %}
+
 	{% set buttonClass = "inline-block px-8 py-4 text-4xl font-medium text-white bg-black border-4 border-black rounded-lg hover:bg-white hover:text-black hover:border-4 hover:border-black focus:outline-none no-underline transition" %}
 
 
@@ -71,7 +108,7 @@
 					{% if page.url != "/" %}
 						<a href="/">
 					{% endif %}
-						<img src="/img/ar-logo-blk.png" class="w-full h-auto py-4" width="220" height="150" alt="Auction Rooms Logo" />
+						<img src="{{ cdn }}/img/ar-logo-blk.png" class="w-full h-auto py-4" width="100%" height="" alt="Auction Rooms Logo" />
 					{% if page.url != "/" %}
 						</a>
 					{% endif %}
@@ -101,7 +138,7 @@
 						</div>
 					{% endif %}
 					{% if heroBlockImg %}
-						<img src="/img/{{ heroBlockImg }}" class="w-full h-full object-cover rounded-lg max-w-2xl" width="" height="" alt="Auction Rooms Logo" />
+						<img src="{{ cdn }}/img/{{ heroBlockImg }}" class="w-full h-full object-cover rounded-lg max-w-2xl" width="" height="" alt="Auction Rooms Logo" />
 					{% else %}
 						<!-- PRESS REVIEWS -->
 						{% set count = 0 %}
@@ -135,9 +172,9 @@
 	{% if heroImage %}
 		<!-- HERO IMAGE -->
 		<div id="hero" class="section !pt-0 mt-1 sm:-mt-3 pb- xl:mx-auto xl:max-w-full xl:px-8 relative">
-			{# <img src="/img/ar-sky-blue-opti.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
-			{# <img src="/img/outside-3.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
-			<img src="/img/front-1.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage">
+			{# <img src="{{ env == 'pro' and cdn or '' }}/img/ar-sky-blue-opti.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
+			{# <img src="{{ env == 'pro' and cdn or '' }}/img/outside-3.jpg" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage"> #}
+			<img src="{{ cdn }}/img/front-1.jpg{{ w }}{{ h }}" alt="" class="w-full rounded-3xl transition-filter duration-700 ease-in-out" id="scrollImage">
 			{# <div class="absolute inset-0 flex items-center justify-center">
 			<div class="bg-black bg-opacity-70 p-8 rounded-lg text-white text-center">
 				<h2 class="text-4xl md:text-6xl font-bold mb-4">Welcome to Auction Rooms</h2>
@@ -212,20 +249,20 @@
 	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
 		<div class="grid grid-cols-4 gap-3">
 		<div class="relative">
-			<img src="/img/coffee-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/coffee-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		</div>
 		<div class="relative">
-			<img src="/img/food-6.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/food-6.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		</div>
 		<div class="relative">
-			<img src="/img/drinks-1v2.png" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/drinks-1v2.png" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		</div>
 		<div class="relative">
-			<img src="/img/food-soup-v1.png" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/food-soup-v1.png" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		</div>
 		</div>
 	</div> #}
@@ -260,20 +297,20 @@
 	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
 		<div class="grid grid-cols-4 gap-3">
 		  <div class="relative">
-			<img src="/img/branding-1v1.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/branding-1v1.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		  </div>
 		  <div class="relative">
-			<img src="/img/drinks-3v1.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/drinks-3v1.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		  </div>
 		  <div class="relative">
-			<img src="/img/food-5.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/food-5.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		  </div>
 		  <div class="relative">
-			<img src="/img/inside-1.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
-			<img src="/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/inside-1.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+			<img src="{{ env == 'pro' and cdn or '' }}/img/watermark.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 		  </div>
 		</div>
 	</div> #}
@@ -302,20 +339,20 @@
 	{# <div class="section max-w-prose mx-auto {{ imagerowpadding }}">
 		<div class="grid grid-cols-4 gap-3">
 		  <div class="relative">
-		<img src="/img/branding-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
-		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/branding-4.jpg" alt="Gallery Image 1" class="w-full h-full object-cover rounded-lg">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 	  </div>
 	  <div class="relative">
-		<img src="/img/coffee-2.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
-		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/coffee-2.jpg" alt="Gallery Image 2" class="w-full h-full object-cover rounded-lg">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 	  </div>
 	  <div class="relative">
-		<img src="/img/courtyard-1.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
-		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/courtyard-1.jpg" alt="Gallery Image 3" class="w-full h-full object-cover rounded-lg">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 	  </div>
 	  <div class="relative">
-		<img src="/img/food-3.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
-		<img src="/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/food-3.jpg" alt="Gallery Image 4" class="w-full h-full object-cover rounded-lg">
+		<img src="{{ env == 'pro' and cdn or '' }}/img/ar-logo-wht-sm.png" alt="Auction Rooms Logo" class="absolute bottom-2 right-3 w-14 h-auto opacity-90">
 	  </div>
 		</div>
 	</div> #}
@@ -613,7 +650,7 @@
 							{% if loop.first %}
 							<span class="inline-block align-baseline mr-1">
 								<a href="/">
-								<img src="/img/ar-logo-blk-sm.png" alt="Auction Rooms Logo" class="h-12" />
+								<img src="{{ imgSrc('img/ar-logo-blk-sm.png') }}" alt="Auction Rooms Logo" class="h-12" />
 								</a>
 							</span>
 							<span class="px-4 inline-block align-bottom">&middot;</span>

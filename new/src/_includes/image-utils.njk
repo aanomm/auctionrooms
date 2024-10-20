@@ -1,0 +1,14 @@
+{% macro imgSrc(src, width=null, height=null, format=null) %}
+  {% set cleanSrc = src | replace(r/^\/+/, '') | replace(r/\/+/g, '/') %}
+  {% if env == 'pro' %}
+    {% set cdn = ".netlify/images?url=" %}
+    {% set params = [] %}
+    {% if width %}{% set params = params.concat(['w=' + width]) %}{% endif %}
+    {% if height %}{% set params = params.concat(['h=' + height]) %}{% endif %}
+    {% if format %}{% set params = params.concat(['fm=' + format]) %}{% endif %}
+    {% set params = params.concat(['fit=crop']) %}
+    {{ cdn }}{{ cleanSrc }}?{{ params | join('&') }}
+  {% else %}
+    /{{ cleanSrc }}
+  {% endif %}
+{% endmacro %}
