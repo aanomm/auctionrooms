@@ -59,6 +59,11 @@ module.exports = function(eleventyConfig) {
     return content
   })
 
+  eleventyConfig.addGlobalData("env", process.env.ELEVENTY_ENV);
+
+  // Log the environment for debugging
+  console.log("Current environment:", process.env.ELEVENTY_ENV);
+
   return {
     dir: {
       input: "src",

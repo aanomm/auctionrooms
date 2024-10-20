@@ -1,11 +1,13 @@
 {% from "image-utils.njk" import imgSrc %}
 
 {% macro imageRow(rowData, basePath="/img/", instaPics=false, ptOr="") %}
+  <!-- Debug: env={{ env }}, basePath={{ basePath }} -->
   <div class="section {% if instaPics %}!pt-0{% endif %} {{ ptOr }} max-w-prose mx-auto">
     <div class="grid grid-col-2 lg:grid-cols-4 gap-3">
       {% for image in rowData %}
       <div class="relative group">
         <a target="_blank" href="https://www.instagram.com/auction_rooms/">
+          <!-- Debug: image[0]={{ image[0] }} -->
           <img
             src="{{ imgSrc(basePath + image[0], width=300, height=300) }}"
             alt="{{ image[1] }}"

@@ -7,8 +7,11 @@
     {% if height %}{% set params = params.concat(['h=' + height]) %}{% endif %}
     {% if format %}{% set params = params.concat(['fm=' + format]) %}{% endif %}
     {% set params = params.concat(['fit=crop']) %}
-    {{ cdn }}{{ cleanSrc }}?{{ params | join('&') }}
+    {% set result = cdn + cleanSrc + '?' + params | join('&') %}
+    <!-- Debug: env={{ env }}, cdn={{ cdn }}, cleanSrc={{ cleanSrc }}, params={{ params | join('&') }} -->
+    {{ result }}
   {% else %}
+    <!-- Debug: env={{ env }}, local path -->
     /{{ cleanSrc }}
   {% endif %}
 {% endmacro %}
