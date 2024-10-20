@@ -3,10 +3,6 @@ const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
-  // console.log("Eleventy includes directory:", eleventyConfig.dir.includes);
-  console.log("Current working directory:", process.cwd());
-  console.log("Files in _includes:", require('fs').readdirSync(process.cwd() + '/src/_includes'));
-
   eleventyConfig.addFilter("date", (dateObj, format) => {
     if (dateObj === 'now') {
       dateObj = new Date();
@@ -48,7 +44,7 @@ module.exports = function(eleventyConfig) {
    */
   eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
     if (
-      process.env.ELEVENTY_ENV == 'pro' &&
+      process.env.ELEVENTY_ENV == 'production' &&
       outputPath &&
       outputPath.endsWith('.html')
     ) {
@@ -62,11 +58,6 @@ module.exports = function(eleventyConfig) {
 
     return content
   })
-
-  eleventyConfig.addGlobalData("env", process.env.ELEVENTY_ENV);
-
-  // Log the environment for debugging
-  console.log("Current environment:", process.env.ELEVENTY_ENV);
 
   return {
     dir: {

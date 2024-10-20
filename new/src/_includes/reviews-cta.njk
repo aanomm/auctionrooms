@@ -1,17 +1,17 @@
-<!-- Read More Press Reviews Block -->
-	<div id="moreReviews" class="relative bg-gray-50 rounded-lg shadow-md group mt-16">
+<!-- More Reviews Block -->
+	<div id="moreReviews" class="relative bg-gray-50 rounded-lg shadow-md group h-full flex flex-col">
 		<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1 group-hover:rotate-0 transition"></div>
-		<div class="relative flex items-center h-full px-6 py-12">
+		<div class="relative flex items-center justify-center flex-grow px-6 py-12">
 			<div class="absolute top-2 left-4 z-[1]">
 				{% set svgSize = "size-20" %}
 				{% set svgColor = "text-gray-200" %}
 				{% include "quote.svg" %}
 			</div>
-			<a href="/{{ ctaLink }}/#read" class="pl-8 sm:pl-16 text-4xl sm:text-5xl leading-[6rem] text-center underline group">
+			<a href="/{{ ctaLink }}" class="pl-16 text-4xl sm:text-5xl leading-normal underline group w-full">
 				{{ ctaText }}
 				<span class="inline-block transition-colors duration-300 text-gray-300 group-hover:text-amber-300">
 					{% set svgSize = "size-12" %}
-					{% set svgColor = "text-gray-300" %}  <!-- Default color -->
+					{% set svgColor = "text-gray-300" %}
 					{% include "r-arrow.svg" %}
 				</span>
 			</a>
