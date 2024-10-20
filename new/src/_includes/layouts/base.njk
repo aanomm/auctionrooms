@@ -74,6 +74,7 @@
 	{% set imagerowpadding = "" %} #}
 
 	{% set suppColor = "slate-200" %}
+	{% set buttonClass = "inline-block px-8 py-4 text-4xl font-medium text-white bg-black border-4 border-black rounded-lg hover:bg-white hover:text-black hover:border-4 hover:border-black focus:outline-none no-underline transition" %}
 
 	{% if heroBlock %}
 		<!-- HERO BLOCK-->
@@ -457,11 +458,11 @@
 				And Answers.
 			</h3>
 			{% if faqs and faq.length > 0 %}
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl mx-auto">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-10 text-3xl mx-auto">
 					{% for item in faq %}
 						<div class="relative">
 							<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-0"></div>
-							<div class="relative px-6 py-12">
+							<div class="relative px-12 py-8">
 								<div class="relative z-[2]">
 									<p class="mb-1 text-5xl">{{ item.question }}</p>
 									<p class="font-xxlight tracking-ss font-atki text-4xl">
@@ -474,14 +475,14 @@
 					{% endfor %}
 
 					<!-- Read More FAQs Block -->
-					<div class="relative bg-amber-50 rounded-lg shadow-md">
+					<div class="relative bg-gray-50 rounded-lg shadow-md">
 						<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
-						<div class="relative flex items-center h-full px-6 py-12">
-							<a href="/contact/" class="pl-16 text-5xl text-center hover:underline">
-								Have more Questions? Contact Us...
+						<div class="relative flex items-center h-full px-12 py-8">
+							<a href="/contact/" class="text-5xl text-center hover:underline">
+								Have more Questions? Contact Us
 								<span class="inline-block">
 								{% set svgSize = "size-12" %}
-								{% set svgColor = "text-amber-300" %}
+								{% set svgColor = "text-gray-300" %}
 								{% include "r-arrow.svg" %}
 								</span>
 							</a>
@@ -526,6 +527,53 @@
 		</div>
 	{% endif %}
 
+	<!-- BOOKINGS BUTTON-->
+	{% if bookButton %}
+		<div id="" class="container mx-auto section !pt-0">
+			<div class="text-center">
+				<a href="https://bookings.obeeapp.com/auctionroomscafe" target="_blank" class="{{ buttonClass }}">
+					Book a Table at Auction Rooms
+				</a>
+			</div>
+		</div>
+	{% endif %}
+
+	<!-- CTA -->
+	{% if cta %}
+		<div id="" class="container mx-auto section {% if page.url != '/' and heroImage != false %}mt-0{% endif %}">
+			<!-- Did You Know Block -->
+			<div id="DidYouKnow" class="relative bg-gray-50 rounded-lg shadow-md group">
+				<div class="absolute inset-0 bg-gray-50 rounded-lg shadow-md -rotate-1 transition-transform duration-300 group-hover:rotate-0"></div>
+				<div class="relative flex items-center justify-center h-full px-6 py-12">
+					<a href="
+						{% if ctaText %}
+							{{ ctaLink }}
+						{% else %}
+							/private-dining
+						{% endif %}
+						" class="flex items-start text-4xl sm:text-5xl leading-16 text-left sm:text-center no-underline group font-rancho">
+						<span class="mr-4 mt-0 translate-y-0 sm:-translate-y-4">
+							{% set svgSize = "size-12" %}
+							{% set svgColor = "text-gray-300" %}
+							{% include "question.svg" %}
+						</span>
+						<span class="flex-1">
+							{% if ctaText %}
+								{{ ctaText }}
+							{% else %}
+								Did you know Auction Rooms offers private dining and private meeting space?
+							{% endif %}
+						</span>
+						<span class="inline-block transition-colors duration-300 text-gray-300 group-hover:text-amber-300 ml-2 self-center transform translate-y-0 sm:translate-y-0">
+							{% set svgSize = "size-12" %}
+							{% set svgColor = "text-gray-300" %}
+							{% include "r-arrow.svg" %}
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
 
 	<!-- Instagram -->
 	<div id="insta" class="container !pt-30 !pb-12 mx-auto section">
@@ -564,7 +612,7 @@
 							</span>
 							<span class="px-4 inline-block align-bottom">&middot;</span>
 							{% endif %}
-							<a href="{{ menu.url }}{% if not menu.target %}#read{% endif %}"
+							<a href="{{ menu.url }}{% if not menu.target %}{% endif %}"
 							class="inline-block align-bottom text-4xl font-semibold text-black hover:text-amber-300 transition-colors duration-300 no-underline hover:underline"
 							{% if menu.target %}
 								target="_blank"
