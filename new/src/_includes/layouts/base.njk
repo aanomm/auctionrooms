@@ -133,7 +133,7 @@
 									{% include "star.svg" %}
 								{% endfor %}
 							</div>
-							<span name="5stars" class="ml-2">1,746 Reviews</span>
+							<span name="5stars" class="ml-2">1,022 Reviews</span>
 				</div>
 				</div>
 
@@ -206,7 +206,7 @@
 			<h4 class="text-5xl font-rancho -mt-2 mb-10 text-center px-6 bg-cover bg-center rounded-lg -rotate-3">
 			{{ textOneSubtitle }}
 			</h3>
-			<p class="font-xxlight tracking-ss font-atki text-3xl sm:text-4xl max-w-prose mx-auto {% if textOneCenter %}text-center{% endif %}">
+			<p class="font-xxlight tracking-ss font-atki text-3xl sm:text-4xl max-w-prose mx-auto {% if textOneCenter %}text-center{% endif %} {% if textOneJustify %}text-justify{% endif %}">
 				<span class="font-medium">{{ textOneTextbold }} </span> {{ textOneText }}
 			</p>
 			{% if textOneMoreText %}
@@ -503,7 +503,7 @@
 
 	<!-- TEXT BLOCK III -->
 	{% if contactForm %}
-		<div id="contactForm" class="container mx-auto section">
+		<div id="contactForm" class="container !pt-0 mx-auto section">
 			{# <h3 class="text-6xl font-bold text-center py-4 px-6 bg-cover bg-center rounded-lg">
 				Contact Form
 			</h3>
