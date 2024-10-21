@@ -398,9 +398,9 @@
 						</div>
 						{% endif %}
 					{% endfor %}
-					{# {% set ctaText = "Read more Press Reviews" %}
+					{% set ctaText = "Read more Press Reviews" %}
 					{% set ctaLink = "press" %}
-					{% include "reviews-cta.njk" %} #}
+					{% include "reviews-cta.njk" %}
 				{% endif %}
 			</div>
 		</div>
@@ -466,8 +466,14 @@
 								<div class="relative z-[2]">
 									<p class="mb-1 text-5xl">{{ item.question }}</p>
 									<p class="font-xxlight tracking-ss font-atki text-4xl">
-										<span class="">{{ item.answer1 }}</span>
+										<span class="font-medium">{{ item.answer1 }}</span>
 										{{ item.answer2 }}
+										{% if item.moreInfoLink and item.moreInfoText %}
+											<a href="{{ item.moreInfoLink }}"
+											   {% if item.target %}target="{{ item.target }}" rel="noopener noreferrer"{% endif %}>
+												{{ item.moreInfoText }}
+											</a>
+										{% endif %}
 									</p>
 								</div>
 							</div>
@@ -475,7 +481,7 @@
 					{% endfor %}
 
 					<!-- Read More FAQs Block -->
-					<div class="relative bg-gray-50 rounded-lg shadow-md">
+					{# <div class="relative bg-gray-50 rounded-lg shadow-md">
 						<div class="absolute inset-0 bg-white rounded-lg shadow-md -rotate-1"></div>
 						<div class="relative flex items-center h-full px-12 py-8">
 							<a href="/contact/" class="text-5xl text-center hover:underline">
@@ -487,7 +493,7 @@
 								</span>
 							</a>
 						</div>
-					</div>
+					</div> #}
 				</div>
 			{% else %}
 

@@ -54,5 +54,12 @@
       "answer2": "Our iconic, heritage-listed venue is the perfect place for events and celebrations. Our famous light-filled Courtyard is available (by the hour) for smaller events, celebrations, private dining and meetings. Or you can hire our entire venue for larger events (after 4pm).",
       "moreInfoText": "More info",
       "moreInfoLink": "/functions#read"
+    },
+    {
+      "question": "Have more questions?",
+      "answer1": "Send us a message",
+      "answer2": "",
+      "moreInfoText": "via our Contact page",
+      "moreInfoLink": "/contact"
     }
 ]
