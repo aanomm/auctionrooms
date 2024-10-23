@@ -42,7 +42,7 @@ module.exports = function(eleventyConfig) {
    * https://www.11ty.dev/docs/copy/
    */
   eleventyConfig.addPassthroughCopy('fonts')
-  eleventyConfig.addPassthroughCopy('img')
+  eleventyConfig.addPassthroughCopy('../img')
   eleventyConfig.addPassthroughCopy('assets') // Add this line to copy the assets directory
 
   /**
