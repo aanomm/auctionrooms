@@ -1,3 +1,5 @@
+{% from "image-macros.njk" import optimizedImage %}
+
 {% macro imageRow(rowData, basePath="/img/", instaPics=false, ptOr="") %}
   <div class="section {% if instaPics %}!pt-0{% endif %} {{ ptOr }} max-w-prose mx-auto">
     <div class="grid grid-col-2 lg:grid-cols-4 gap-3">

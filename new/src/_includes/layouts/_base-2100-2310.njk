@@ -1,5 +1,4 @@
 {% from "imagerow.njk" import imageRow %}
-{% from "image-macros.njk" import optimizedImage %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,10 +86,7 @@
 				{% if page.url != "/" %}
 				<a href="/">
 				{% endif %}
-				{# <img src="/img/ar-logo-blk.png" class="w-full h-auto mb-6" width="220" height="150"
-                alt="Auction Rooms Logo" /> #}
-                {{ optimizedImage("/img/ar-logo-blk.png", "Auction Rooms Logo", "w-full h-auto
-                mb-6") }}
+				<img src="/img/ar-logo-blk.png" class="w-full h-auto mb-6" width="220" height="150" alt="Auction Rooms Logo" />
 				{% if page.url != "/" %}
 				</a>
 				{% endif %}

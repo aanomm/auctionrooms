@@ -1,0 +1,8 @@
+{% macro optimizedImage(src, alt, width, height) %}
+  {% if env == 'pro' %}
+    <img src="/.netlify/images?url={{ src | url }}&w={{ width }}&h={{ height }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}">
+  {% else %}
+    <img src="{{ src }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}">
+  {% endif %}
+{% endmacro %}
+
