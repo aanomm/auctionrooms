@@ -82,11 +82,11 @@
 			<div class="container mx-auto flex flex-col sm:flex-row gap-x-20 items-center">
 
 			<!-- COL 1 / LOGO -->
-			<div class="w-full sm:w-1/2 flex flex-col items-center text-center min-h-screen sm:min-h-0 justify-between">
+			<div class="w-full sm:w-1/2 flex flex-col items-center text-center justify-center min-h-screen sm:min-h-0 sm:justify-between">
 				{% if page.url != "/" %}
 				<a href="/">
 				{% endif %}
-				<img src="/img/ar-logo-blk.png" class="w-full h-auto mb-6" width="220" height="150" alt="Auction Rooms Logo" />
+				<img src="/img/ar-logo-blk.png" class="w-full h-auto mb-6 max-w-[220px]" width="220" height="150" alt="Auction Rooms Logo" />
 				{% if page.url != "/" %}
 				</a>
 				{% endif %}
@@ -97,7 +97,7 @@
 
 
 			<!-- COL 2 / REVIEWS -->
-			<div name="two" class="w-full sm:w-1/2 flex flex-col items-end">
+			<div name="two" class="w-full sm:w-1/2 flex flex-col items-center sm:items-end mt-8 sm:mt-0">
 				{# <div class="flex flex-col items-start mt-0"></div> #}
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6 text-3xl">
 					{% if tradeHours %}
@@ -125,16 +125,33 @@
 						{% endfor %}
 					{% endif %}
 						<!-- STAR COUNT -->
-						<div class="pt-4 px-6 text-3xl rounded-lg relative flex items-center justify-center">
-							<div class="flex items-center -mt-2">
+						<div class="pt-4 px-6 text-3xl rounded-lg relative flex items-center justify-center space-x-4">
+							<div class="flex items-center">
 								{% set svgSize = "size-10" %}
 								{% set svgColor = "text-amber-300" %}
 								{% for i in range(5) %}
 									{% include "star.svg" %}
 								{% endfor %}
 							</div>
-							<span name="5stars" class="ml-2">1,022 Reviews</span>
-				</div>
+							<span name="5stars" class="flex items-center">
+								<span class="inline-block align-middle leading-none pt-1.5">1,022 Reviews</span>
+							</span>
+							<span class="text-gray-300">&middot;</span>
+							<span class="flex items-center space-x-1">
+								<!-- Icon 1 with link -->
+								<a href="https://www.instagram.com/auction_rooms/" target="_blank" rel="noopener noreferrer">
+									{% set svgSize = "size-12" %}
+									{% set svgColor = "text-black" %}
+									{% include "insta.svg" %}
+								</a>
+								<a href="https://www.facebook.com/auctionroomsnorthmelbourne"  target="_blank" rel="noopener noreferrer">
+									<!-- Icon 2 placeholder -->
+									{% set svgSize = "size-9" %}
+									{% set svgColor = "text-black" %}
+									{% include "facey.svg" %}
+								</a>
+							</span>
+						</div>
 				</div>
 
 			</div> {# excess div tag? #}
