@@ -3,6 +3,12 @@ const UpgradeHelper = require("@11ty/eleventy-upgrade-help");
 const { DateTime } = require("luxon");
 
 module.exports = function(eleventyConfig) {
+  content: [
+    './**/*.njk',
+    './**/*.md',
+    './**/*.html',
+    './**/*.js'
+  ],
   eleventyConfig.addFilter("date", (dateObj, format) => {
     if (dateObj === 'now') {
       dateObj = new Date();
